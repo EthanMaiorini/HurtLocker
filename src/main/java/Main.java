@@ -1,5 +1,7 @@
 import org.apache.commons.io.IOUtils;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -43,7 +45,14 @@ public class Main {
 
     public static void main(String[] args) throws Exception{
         String output = (new Main()).readRawDataToString();
-        System.out.println(output);
+        GroceryList groceryList = new GroceryList();
+        List<String> groceries = new ArrayList<>();
+        groceries = JerksonParser.getJerksonStrings(output);
+        for(String s : groceries){
+            groceryList.put(JerksonParser.createObjectFromString(s));
+        }
+        System.out.println(groceryList);
+
 
     }
 }

@@ -13,7 +13,7 @@ public class JerksonParser {
     public static String getStringFromResult(String readRawDataToString) {
         int x =0;
         String result = "";
-        String patternString = "[':',';','@','^','*','%']";
+        String patternString = "[':',';','@','^','*','%','!']";
         Pattern pattern = Pattern.compile(patternString);
         Matcher matcher = pattern.matcher(readRawDataToString);
         if(matcher.find())
@@ -36,6 +36,7 @@ public class JerksonParser {
                 result += readRawDataToString.charAt(i);
             }
             x += 2;
+                //System.out.println(result);
             currentCursor = x;
             groceries.add(result);
             result = "";
@@ -57,7 +58,7 @@ public class JerksonParser {
 //    }
 
     public static int stringLength(String str){
-        int x =1;
+        int x =0;
         str += '\0';
         while(str.charAt(x) != '\0')
             x++;
@@ -69,10 +70,14 @@ public class JerksonParser {
         Grocery item = new Grocery();
         String patternString = "[n,N][a,A][m,M][e,E]";
         String name = getObject(patternString,s);
-        item.setName(name);
+        if(stringLength(name) == 0) {
+            item.setName("Error");
+        } else item.setName(name);
         String patternString1 = "[p,P][r,R][i,I][c,C][e,E]";
         String price = getObject(patternString1,s);
-        item.setPrice(price);
+        if(stringLength(price) == 0) {
+            item.setPrice("Error");
+        } else item.setPrice(price);
         String patternString2 = "[t,T][y,Y][p,P][e,E]";
         String type = getObject(patternString2,s);
         item.setType(type);
