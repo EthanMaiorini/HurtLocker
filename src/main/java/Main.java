@@ -5,36 +5,36 @@ import java.util.regex.Pattern;
 
 public class Main {
 
-    public static String getStringFromResult(String readRawDataToString) {
-        int x =0;
-        String result = "";
-        String patternString = "[':',';','@','^','*','%']";
-        Pattern pattern = Pattern.compile(patternString);
-        Matcher matcher = pattern.matcher(readRawDataToString);
-        if(matcher.find())
-           x = matcher.start();
-        for (int i = 0; i< x;i++){
-            result += readRawDataToString.charAt(i);
-        }
-        return result;
-    }
+//    public static String getStringFromResult(String readRawDataToString) {
+//        int x =0;
+//        String result = "";
+//        String patternString = "[':',';','@','^','*','%']";
+//        Pattern pattern = Pattern.compile(patternString);
+//        Matcher matcher = pattern.matcher(readRawDataToString);
+//        if(matcher.find())
+//           x = matcher.start();
+//        for (int i = 0; i< x;i++){
+//            result += readRawDataToString.charAt(i);
+//        }
+//        return result;
+//    }
 
-    public static String getKeyValuePairs(String readRawDataToString){
-        int x =0;
-        String result = "";
-        String patternString = "##";
-        Pattern pattern = Pattern.compile(patternString);
-        Matcher matcher = pattern.matcher(readRawDataToString);
-        if(matcher.find())
-            x = matcher.start();
-        for (int i = 0; i< x;i++){
-            result += readRawDataToString.charAt(i);
-        }
-        return result;
-    }
+//    public static String getKeyValuePairs(String readRawDataToString){
+//        int x =0;
+//        String result = "";
+//        String patternString = "##";
+//        Pattern pattern = Pattern.compile(patternString);
+//        Matcher matcher = pattern.matcher(readRawDataToString);
+//        if(matcher.find())
+//            x = matcher.start();
+//        for (int i = 0; i< x;i++){
+//            result += readRawDataToString.charAt(i);
+//        }
+//        return result;
+//    }
 
-    public String readRawDataToString() throws Exception{
-        ClassLoader classLoader = getClass().getClassLoader();
+    public static String readRawDataToString() throws Exception{
+        ClassLoader classLoader = Main.class.getClassLoader();
         String result = IOUtils.toString(classLoader.getResourceAsStream("RawData.txt"));
         return result;
     }
