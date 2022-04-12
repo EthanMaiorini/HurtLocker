@@ -52,6 +52,8 @@ public class Main {
             groceryList.put(JerksonParser.createObjectFromString(s));
         }
         System.out.println(groceryList);
+        groceryList.sortbyName();
+        groceryList.getGroceryList();
 
 
     }
